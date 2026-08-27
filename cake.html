@@ -1,0 +1,415 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilek zamanı✨</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+background:
+    radial-gradient(
+        circle at 50% 58%,
+        rgba(255, 170, 195, 0.45),
+        transparent 38%
+    ),
+    linear-gradient(
+        135deg,
+        #fff0f4,
+        #ffe4ec,
+        #fff1f3
+    );
+
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+        .heading {
+            font-size: 1.6rem;
+            color: #e98aaa;
+            text-shadow: 
+    0 0 10px rgba(233, 138, 170, 0.5),
+    0 0 20px rgba(233, 138, 170, 0.3),
+    0 0 30px rgba(233, 138, 170, 0.2);
+            margin-bottom: 2.5rem;
+            text-align: center;
+            animation: glow 2s  ease-in-out infinite alternate;
+        }
+
+      @keyframes glow {
+    from {
+        text-shadow:
+            0 0 10px #e98aaa,
+            0 0 20px #f3b6c9;
+    }
+    to {
+        text-shadow:
+            0 0 15px #e98aaa,
+            0 0 30px #f3b6c9;
+    }
+}
+
+       .cake-container {
+    position: relative;
+    width: min(88vw, 430px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cake-container:hover {
+    transform: scale(1.03);
+}
+
+.cake-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 55vh;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 20px rgba(120, 70, 90, 0.22));
+    transition: opacity 0.8s ease;
+}
+
+.cake-image.off {
+    opacity: 0;
+}
+/* Elegant celebration pieces */
+.ribbon {
+    position: fixed;
+    top: -40px;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    width: 10px;
+    height: 28px;
+    opacity: 0;
+    animation: celebrationFall var(--fall-duration) cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+.ribbon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: inherit;
+}
+
+/* Thin curled ribbon */
+.ribbon.curl {
+    width: 5px;
+    height: 45px;
+    border-radius: 50%;
+    background: transparent !important;
+    border: 2px solid var(--ribbon-color);
+    border-left-color: transparent;
+    transform: rotate(25deg);
+}
+
+/* Small elegant confetti */
+.ribbon.confetti {
+    width: 7px;
+    height: 13px;
+    border-radius: 2px;
+}
+
+/* Tiny celebration sparkle */
+.ribbon.sparkle {
+    width: 9px;
+    height: 9px;
+    background: var(--ribbon-color) !important;
+    clip-path: polygon(
+        50% 0%,
+        61% 39%,
+        100% 50%,
+        61% 61%,
+        50% 100%,
+        39% 61%,
+        0% 50%,
+        39% 39%
+    );
+}
+
+@keyframes celebrationFall {
+    0% {
+        transform: translate3d(0, -40px, 0)
+                   rotate(0deg)
+                   scale(0.8);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    25% {
+        transform: translate3d(var(--drift-1), 25vh, 0)
+                   rotate(var(--rotate-1))
+                   scale(1);
+    }
+
+    50% {
+        transform: translate3d(var(--drift-2), 50vh, 0)
+                   rotate(var(--rotate-2))
+                   scale(0.95);
+    }
+
+    75% {
+        transform: translate3d(var(--drift-3), 75vh, 0)
+                   rotate(var(--rotate-3))
+                   scale(1.05);
+    }
+
+    100% {
+        transform: translate3d(var(--drift-4), 115vh, 0)
+                   rotate(var(--rotate-4))
+                   scale(0.9);
+        opacity: 0;
+    }
+}
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .next-page-button {
+            position: fixed;
+            bottom: 40px;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #f4a6c1, #e98aaa);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 15px rgba(255, 113, 182, 0.5),
+                0 0 30px rgba(255, 113, 182, 0.3);
+            font-family: 'Arial', sans-serif;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    
+        .next-page-button::after {
+            content: '→';
+            font-size: 1.4rem;
+            transition: transform 0.3s ease;
+        }
+    
+        .next-page-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 0 20px rgba(255, 113, 182, 0.6),
+                0 0 40px rgba(255, 113, 182, 0.4);
+            background: linear-gradient(
+    135deg,
+    #fffaf7,
+    #fff5f2,
+    #fdf8f5
+);
+        }
+    
+        .next-page-button:hover::after {
+            transform: translateX(5px);
+        }
+    
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+    
+        .next-page-button.show {
+            opacity: 1;
+            transform: translateY(0);
+            animation: pulse 2s infinite;
+        }
+    
+    </style>
+</head>
+<body>
+    <p class="heading">Bir dilek tut... sonra mumları üfle ✧</p>
+  <div class="cake-container">
+    <img src="images/cake.png" alt="Birthday Cake" class="cake-image">
+</div>
+    <button class="next-page-button">Son bir şey kaldı✦</button>
+
+    <script>
+      const cake = document.querySelector('.cake-container');
+const cakeImage = document.querySelector('.cake-image');
+let isClicked = false;
+
+        const ribbonColors = [
+            'linear-gradient(45deg, #FF9ECD, #FF71B6)',
+            'linear-gradient(45deg, #FFB7E0, #FF8AC7)',
+            'linear-gradient(45deg, #FFC4E6, #FFA3D4)',
+            'linear-gradient(45deg, #E0C3FC, #BDE0FE)',
+            'linear-gradient(45deg, #FFCAD4, #FFD1E3)',
+            'linear-gradient(45deg, #B5EAD7, #C7F9CC)',
+            'linear-gradient(45deg, #FF9AA2, #FFB7B2)',
+            'linear-gradient(45deg, #FFDAC1, #FFE5D9)'
+        ];
+
+   function createRibbon() {
+    const ribbon = document.createElement('div');
+
+    ribbon.className = 'ribbon';
+
+    // Different celebration shapes
+    const shapes = ['curl', 'curl', 'confetti', 'confetti', 'sparkle'];
+
+    const shape = shapes[Math.floor(Math.random() * shapes.length)];
+
+    ribbon.classList.add(shape);
+
+    // Elegant colors matching the cake
+const colors = [
+    '#e7b6c9',
+    '#d8b27c',
+    '#f4dfe7',
+    '#f3b6c9',
+    '#fff4e8',
+    '#cda7bd'
+];
+
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    ribbon.style.setProperty('--ribbon-color', color);
+
+    if (shape === 'curl') {
+        ribbon.style.borderColor = color;
+        ribbon.style.borderLeftColor = 'transparent';
+    } else {
+        ribbon.style.background = color;
+    }
+
+    // Random horizontal position
+    ribbon.style.left = `${Math.random() * 100}vw`;
+
+    // Natural irregular movement
+   const drift = () => `${-45 + Math.random() * 90}px`;
+
+ribbon.style.setProperty('--drift-1', drift());
+ribbon.style.setProperty('--drift-2', drift());
+ribbon.style.setProperty('--drift-3', drift());
+ribbon.style.setProperty('--drift-4', drift());
+
+ribbon.style.setProperty(
+    '--rotate-1',
+    `${Math.random() * 180 - 90}deg`
+);
+
+ribbon.style.setProperty(
+    '--rotate-2',
+    `${Math.random() * 360 - 180}deg`
+);
+
+ribbon.style.setProperty(
+    '--rotate-3',
+    `${Math.random() * 360 - 180}deg`
+);
+
+ribbon.style.setProperty(
+    '--rotate-4',
+    `${Math.random() * 720 - 360}deg`
+);
+
+    // Random rotations
+    ribbon.style.setProperty(
+        '--rotation-1',
+        `${Math.random() * 360}deg`
+    );
+
+    ribbon.style.setProperty(
+        '--rotation-2',
+        `${180 + Math.random() * 360}deg`
+    );
+
+    ribbon.style.setProperty(
+        '--rotation-3',
+        `${360 + Math.random() * 360}deg`
+    );
+
+    ribbon.style.setProperty(
+        '--rotation-4',
+        `${540 + Math.random() * 540}deg`
+    );
+
+    // Different falling speeds
+    ribbon.style.setProperty(
+        '--fall-duration',
+        `${3.5 + Math.random() * 2.5}s`
+    );
+
+    document.body.appendChild(ribbon);
+
+    ribbon.addEventListener('animationend', () => {
+        ribbon.remove();
+    });
+}
+
+      function startCelebration() {
+    if (isClicked) return;
+    isClicked = true;
+
+    // Replace the cake with the version without flames
+    cakeImage.style.opacity = '0';
+
+    setTimeout(() => {
+        cakeImage.src = 'images/cake-no-flame.png';
+        cakeImage.style.opacity = '1';
+    }, 500);
+
+    // Start ribbon rain immediately
+    const ribbonInterval = setInterval(() => {
+    const amount = 3 + Math.floor(Math.random() * 5);
+
+    for (let i = 0; i < amount; i++) {
+        setTimeout(() => {
+            createRibbon();
+        }, Math.random() * 350);
+    }
+}, 350);
+
+    // Show next page button after 2 seconds
+    setTimeout(() => {
+        const nextButton = document.querySelector('.next-page-button');
+        nextButton.classList.add('show');
+    }, 2000);
+
+    // Stop ribbon rain after 6 seconds
+    setTimeout(() => {
+        clearInterval(ribbonInterval);
+    }, 6000);
+}
+
+// Cake click
+cake.addEventListener('click', startCelebration);
+
+// Next page button
+document.querySelector('.next-page-button').addEventListener('click', () => {
+    window.location.href = 'final.html';
+});
+    </script>
+
+</body></html>
